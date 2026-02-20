@@ -2,10 +2,9 @@
 
 type Brand<K, T> = K & { __brand: T };
 
-
-export type ColumnId = Brand<string, "ColumnId">;
-export type CardId = Brand<string, "CardId">;
-export type BoardId = Brand<string, "BoardId">;
+export type ColumnId = Brand<string, 'ColumnId'>;
+export type CardId = Brand<string, 'CardId'>;
+export type BoardId = Brand<string, 'BoardId'>;
 
 export interface Card {
   id: CardId;

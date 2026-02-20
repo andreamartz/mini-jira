@@ -1,5 +1,5 @@
-import "./App.css";
-import { mockData } from "./mock/mockBoard";
+import './App.css';
+import { mockData } from './mock/mockBoard';
 
 export default function App() {
   const { board, columnsById, cardsById } = mockData;
@@ -25,13 +25,8 @@ export default function App() {
                   if (!card) return null;
 
                   const { title: cardTitle } = card;
-                  return (
-                    <li key={cardId}>
-                      Card title: { cardTitle }
-                    </li>
-                  );
-                })
-              }
+                  return <li key={cardId}>Card title: {cardTitle}</li>;
+                })}
               </ul>
             </section>
           );
