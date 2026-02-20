@@ -1,5 +1,6 @@
 import './App.css';
 import { mockData } from './mock/mockBoard';
+import { Card } from './components/Card';
 
 export default function App() {
   const { board, columnsById, cardsById } = mockData;
@@ -8,7 +9,6 @@ export default function App() {
   return (
     <>
       <h1>{board.title}</h1>
-      <p>Scaffold is working ✅</p>
       <div>
         {columnIds.map((colId) => {
           const column = columnsById[colId];
@@ -24,8 +24,7 @@ export default function App() {
                   const card = cardsById[cardId];
                   if (!card) return null;
 
-                  const { title: cardTitle } = card;
-                  return <li key={cardId}>Card title: {cardTitle}</li>;
+                  return <Card key={card.id} card={card} />;
                 })}
               </ul>
             </section>
