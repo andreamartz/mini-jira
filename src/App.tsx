@@ -1,6 +1,6 @@
 import './App.css';
 import { mockData } from './mock/mockBoard';
-import { Card } from './components/Card';
+import { Column } from './components/Column';
 
 export default function App() {
   const { board, columnsById, cardsById } = mockData;
@@ -14,21 +14,7 @@ export default function App() {
           const column = columnsById[colId];
           if (!column) return null;
 
-          const { cardIds } = column;
-          const { title: colTitle } = column;
-          return (
-            <section key={colId}>
-              <h2>Column title: {colTitle}</h2>
-              <ul>
-                {cardIds.map((cardId) => {
-                  const card = cardsById[cardId];
-                  if (!card) return null;
-
-                  return <Card key={card.id} card={card} />;
-                })}
-              </ul>
-            </section>
-          );
+          return <Column key={colId} column={column} cardsById={cardsById} />;
         })}
       </div>
     </>
