@@ -1,24 +1,23 @@
-import type { Card as CardType, CardId, Column as ColumnType } from '../types/kanban';
+import type { Column as ColumnType } from '../types/kanban';
+import { useAppSelector } from '../app/hooks';
+import { selectCardsForColumn } from '../features/board/boardSelectors';
 import { Card } from './Card';
 
 interface ColumnProps {
   column: ColumnType;
-  cardsById: Record<CardId, CardType>;
 }
 
-export const Column = ({ column, cardsById }: ColumnProps) => {
-  const { title, cardIds } = column;
+export const Column = ({ column }: ColumnProps) => {
+  const { title } = column;
+  const cards = useAppSelector((state) => selectCardsForColumn(state, column.id));
 
   return (
     <section>
-      <h2>Column title: {title}</h2>
+      <h2>{title}</h2>
       <ul>
-        {cardIds.map((id) => {
-          const card = cardsById[id];
-          if (!card) return null;
-
-          return <Card key={card.id} card={card} />;
-        })}
+        {cards.map((card) => (
+          <Card key={card.id} card={card} />
+        ))}
       </ul>
     </section>
   );

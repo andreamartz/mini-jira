@@ -1,21 +1,19 @@
 import './App.css';
-import { mockData } from './mock/mockBoard';
 import { Column } from './components/Column';
+import { useAppSelector } from './app/hooks';
+import { selectBoard, selectColumnsInOrder } from './features/board/boardSelectors';
 
 export default function App() {
-  const { board, columnsById, cardsById } = mockData;
-  const { columnIds } = board;
+  const board = useAppSelector(selectBoard);
+  const columns = useAppSelector(selectColumnsInOrder);
 
   return (
     <>
       <h1>{board.title}</h1>
       <div>
-        {columnIds.map((colId) => {
-          const column = columnsById[colId];
-          if (!column) return null;
-
-          return <Column key={colId} column={column} cardsById={cardsById} />;
-        })}
+        {columns.map((column) => (
+          <Column key={column.id} column={column} />
+        ))}
       </div>
     </>
   );
