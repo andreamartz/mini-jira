@@ -14,7 +14,7 @@ const cardId4 = 'card-4' as CardId;
 const cardId5 = 'card-5' as CardId;
 const cardId6 = 'card-6' as CardId;
 
-const cardsById: Record<CardId, Card> = {
+export const cardsById: Record<CardId, Card> = {
   [cardId1]: { id: cardId1, title: 'Card 1 Title' },
   [cardId2]: { id: cardId2, title: 'Card 2 Title' },
   [cardId3]: { id: cardId3, title: 'Card 3 Title' },
@@ -23,7 +23,7 @@ const cardsById: Record<CardId, Card> = {
   [cardId6]: { id: cardId6, title: 'Card 6 Title' },
 };
 
-const columnsById: Record<ColumnId, Column> = {
+export const columnsById: Record<ColumnId, Column> = {
   [columnId1]: {
     id: columnId1,
     title: 'Column 1 Title',
@@ -46,7 +46,7 @@ const columnsById: Record<ColumnId, Column> = {
   },
 };
 
-const board: Board = {
+export const board: Board = {
   id: boardId1,
   title: 'Board 1 Title',
   columnIds: [columnId1, columnId2, columnId3, columnId4],
